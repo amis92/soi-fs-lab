@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapsuleFileSystem", "ConsoleApplication1\CapsuleFileSystem.csproj", "{37CB3434-6222-44ED-AE92-7E043EF85177}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapsuleFileSystem", "CapsuleFileSystem\CapsuleFileSystem.csproj", "{37CB3434-6222-44ED-AE92-7E043EF85177}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
