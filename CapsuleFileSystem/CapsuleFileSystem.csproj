@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CapsuleDevice.cs" />
+    <Compile Include="DeviceUnmountedException.cs" />
     <Compile Include="FileSystem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

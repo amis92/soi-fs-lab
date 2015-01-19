@@ -6,27 +6,48 @@ using System.Threading.Tasks;
 
 namespace CapsuleFileSystem
 {
-    class CapsuleDevice
+    /// <summary>
+    /// Demo capsule, allows only for testing writing to single file.
+    /// </summary>
+    internal class CapsuleDevice
     {
+        private readonly FileSystem fileSystem;
         private bool isMounted = false;
-        public void Mount()
+
+        /// <summary>
+        /// Creates capsule with single empty test file with given name.
+        /// </summary>
+        /// <param name="testFileName"></param>
+        public CapsuleDevice(byte testFileName)
         {
-            isMounted = true;
+            IsUnmountInterruptOn = false;
+            fileSystem = new FileSystem(this);
+            fileSystem.PrepareFileForTest(testFileName);
         }
 
-        public void Unmount()
+        public bool IsUnmountInterruptOn { get; set; }
+
+        public void Mount()
         {
-            isMounted = false;
+            if (!isMounted)
+                fileSystem.CheckAndRepair();
+            isMounted = true;
         }
 
         public void Write(byte fileName, byte offset, byte[] buffer)
         {
-
-        }
-
-        private bool CanSave(byte address, byte blockCount)
-        {
-            return false;
+            if (isMounted)
+            {
+                if (IsUnmountInterruptOn)
+                {
+                    isMounted = false;
+                }
+                fileSystem.Write(fileName, offset, buffer);
+            }
+            else
+            {
+                throw new DeviceUnmountedException();
+            }
         }
     }
 }
